@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="app" id="app">
+  {{msg2}}
+  <div ref="msgDiv">{{msg}}</div>
+  <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
+  <div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>
+  <div v-if="msg3">Message got outside $nextTick: {{msg3}}</div>
+  <button v-on:click="changeMsg">
+    Change the Message
+  </button>
+  <button v-on:click="greet">Greet</button>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+  var example2 = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Hello Vue.',
+      msg1: '',
+      msg2: '',
+      msg3: ''
+    },
+    methods: {
+      greet: function (event) {
+        // `this` 在方法里指当前 Vue 实例
+        alert('Hello ' + this.name + '!')
+        // `event` 是原生 DOM 事件
+        if (event) {
+          alert(event.target.tagName)
+        }
+      },
+      changeMsg: function () {
+        this.msg = 'Hello world.'
+        this.msg1 = this.$refs.msgDiv.innerHTML
+        this.$nextTick(function () {
+          this.msg2 = this.$refs.msgDiv.innerHTML
+        })
+        this.msg3 = this.$refs.msgDiv.innerHTML
+      }
+    }
+  })
+
+  var Dog = function () {
+    this.name = 'dog'
+    this.eat = function () {
+      console.log(this.name + ' eat')
+    }
+    this.bark = function () {
+      console.log(this.name + ' bark')
+    }
+  }
+  var Cat = function () {
+    this.name = 'cat'
+  }
+  var dog = new Dog()
+  var cat = new Cat()
+  dog.eat.call(cat)
+</script>
+</html>

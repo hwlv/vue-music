@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jquery.js"></script>
+<script>
+  var url='http://192.168.3.16:3000/jsonp?callback=test';
+  function test (data) {
+    alert(data.name);
+  }
+//  (function () {
+//    var hm = document.createElement("script");
+//    hm.src = url;
+//    var s = document.getElementsByTagName("script")[0];
+//    s.parentNode.insertBefore(hm, s);
+//  })();
+//  $.getJSON(url, {}, function (res) {
+//    console.log(res)
+//  })
+  $.ajax({
+    url: 'http://192.168.3.16:3000/jsonp',
+    dataType: "jsonp",
+    type: "GET",
+    jsonp: "callback",
+    data:{"test":"test"},
+    success: function (data) {
+      console.log(data)
+    }
+  })
+</script>
+</html>

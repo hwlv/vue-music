@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jquery横向手风琴效果</title>
+  <style>
+    .solution-item {
+      position: relative;
+      width: 1000px;
+      height: 420px;
+      margin: 50px auto;
+      overflow: hidden;
+      zoom: 1;
+    }
+
+    .solution-item ul {
+      height: 400px;
+    }
+
+    .solution-item li {
+      position: relative;
+      overflow: hidden;
+      zoom: 1;
+      float: left;
+      width: 60px;
+      margin-right: 5px;
+      height: 400px;
+    }
+
+    .solution-item .num {
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 400px;
+      word-wrap: break-word;
+      text-align: center;
+      color: #8a8a8a;
+      background-color: #e5e5e5;
+    }
+
+    .num h1 {
+      font-size: 20px;
+      font-weight: 400;
+      width: 20px;
+      line-height: 1.1;
+      margin: 80px auto 0;
+      letter-spacing: 0;
+    }
+
+    .num h1 span {
+      font-size: 24px;
+    }
+
+    .solution-item .current {
+      background: #c20000;
+    }
+
+    .current h1 {
+      color: #fff;
+    }
+
+    .description {
+      position: absolute;
+      left: 60px;
+      top: 0;
+      width: 315px;
+      height: 400px;
+      color: #000;
+      background: #eeeeee;
+    }
+
+    .description h2 {
+      margin: 40px 0 40px 10px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .description p {
+      margin: 0 10px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .description {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="solution-item">
+  <ul>
+    <li class="first">
+      <div class="num current"><h1>平台解决方案</h1></div>
+      <div class="description description-current">
+        <h2>RISS2平台解决方案</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+    <li class="second">
+      <div class="num"><h1>读者行为分析服务平台</h1></div>
+      <div class="description">
+        <h2>读者行为分析服务平台</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+    <li class="third">
+      <div class="num"><h1>论文管理系统解决方案</h1></div>
+      <div class="description">
+        <h2>论文管理系统解决方案</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+    <li class="fourth">
+      <div class="num"><h1>采集系统解决方案</h1></div>
+      <div class="description">
+        <h2>采集系统解决方案</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+    <li class="fifth">
+      <div class="num"><h1>机构知识库解决方案</h1></div>
+      <div class="description">
+        <h2>机构知识库解决方案</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+    <li class="six">
+      <div class="num"><h1>学科服务系统解决方案</h1></div>
+      <div class="description">
+        <h2>学科服务系统解决方案</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+    <li class="seven">
+      <div class="num"><h1>远程访问系统解决方案</h1></div>
+      <div class="description">
+        <h2>远程访问系统解决方案</h2>
+        <p>
+          本方案将采用集成RISS2平台和定制新功能
+          相结合的方式，实现特色数据库的建设。项目初
+          步考虑分为：资源检索与个人中心、资源建设与
+          管理系统等子系统。两个系统以资源展示的形式
+          提供给最终用户。
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+  $('.solution-item li').eq(0).css('width', '375px')
+  $('.num').mouseenter(function () {//如果要点击效果,把mouseenter改成click
+    $('.solution-item li').stop(true, true)
+    $(this).css({'background-color': '#c20000'}).find('h1').css({'color': '#fff'}).find('img').attr('src', './images/RISS2.png')
+    $(this).parent().siblings().find('.num').css({'background-color': '#e5e5e5'}).find('h1').css('color', '#8a8a8a').find('img').attr('src', './images/RISS2-1.png')
+    $(this).parent().animate({width: '375px'}, 500).siblings('li').animate({width: '60px'}, 500)
+  })
+</script>
+</body>
+</html>

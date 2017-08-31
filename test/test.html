@@ -1,0 +1,34 @@
+<!--
+Author: lJian
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+df的开放接口3d
+</body>
+<script type="text/javascript">
+    //document上绑定自定义事件oneating
+    document.addEventListener('oneating', function(event) {
+        alert(event.mingzi + '，' + event.message);
+    }, false);
+console.log('d3');
+    //创建event的对象实例。
+    var event = document.createEvent('HTMLEvents');
+    // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+    event.initEvent("oneating", true, true);
+    /*属性，随便自己定义*/
+    event.mingzi = 'hello,我是李小贱';
+    event.message = '我今天24岁';
+
+    //触发自定义事件oneating
+    document.dispatchEvent(event);
+</script>
+
+</html>

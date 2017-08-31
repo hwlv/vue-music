@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="margin: 0;padding: 0;">
+<div id="divParent" style="padding: 8px; background-color: #aaa; position: relative;">
+  <div id="divDisplay" style="background-color: #0f0; margin: 30px; padding: 10px;
+            height: 200px; width: 200px; border: solid 3px #f00;">
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+  var div = document.getElementById('divDisplay')
+
+  var clientHeight = div.clientHeight
+  var clientWidth = div.clientWidth
+  div.innerHTML += 'clientHeight: ' + clientHeight + '<br/>'
+  div.innerHTML += 'clientWidth: ' + clientWidth + '<br/>'
+
+  var clientLeft = div.clientLeft
+  var clientTop = div.clientTop
+  div.innerHTML += 'clientLeft: ' + clientLeft + '<br/>'
+  div.innerHTML += 'clientTop: ' + clientTop + '<br/>'
+
+  var offsetHeight = div.offsetHeight
+  var offsetWidth = div.offsetWidth
+  div.innerHTML += 'offsetHeight: ' + offsetHeight + '<br/>'
+  div.innerHTML += 'offsetWidth: ' + offsetWidth + '<br/>'
+
+  var offsetLeft = div.offsetLeft
+  var offsetTop = div.offsetTop
+  div.innerHTML += 'offsetLeft: ' + offsetLeft + '<br/>'
+  div.innerHTML += 'offsetTop: ' + offsetTop + '<br/>'
+
+  var offsetParent = div.offsetParent
+  div.innerHTML += 'offsetParent: ' + offsetParent.id + '<br/>'
+</script>
+</html>

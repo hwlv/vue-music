@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+  <style>
+    div.container
+    {
+      width:480px;
+      border:15px solid;
+    }
+    div.box
+    {
+
+      /*box-sizing:border-box;*/
+      /*-webkit-box-sizing:border-box; !* Safari *!*/
+      width:50%;
+      border:8px solid red;
+      float:left;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="dddd">
+  <div class="box">这个 div 占据左半部分。</div>
+  <div class="box">这个 div 占据右半部分。</div>
+</div>
+
+</body>
+<script>
+  console.log(document.getElementById('dddd').clientWidth);
+console.log(document.getElementsByClassName('box')[0].clientWidth)
+</script>
+</html>
