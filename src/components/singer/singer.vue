@@ -1,46 +1,51 @@
 <template>
-  <div class="singer">
-    <list-view @select="selectSinger"  :data="singers"></list-view>
+  <div class="singer" ref="singer">
+    <list-view @select="selectSinger" :data="singers" ref="list"></list-view>
     <router-view></router-view>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
-  import { getSingerList } from 'api/singer'
-  import { ERR_OK } from 'api/config'
-  //  import {mapMutations} from 'vuex'
+<script>
+  import ListView from 'base/listview/listview'
+  import {getSingerList} from 'api/singer'
+  import {ERR_OK} from 'api/config'
   import Singer from 'common/js/singer'
-  import ListView from 'base/listview/Listview'
+  import {mapMutations} from 'vuex'
+//  import {playlistMixin} from 'common/js/mixin'
 
-  const HOT_NAME = '热门'
   const HOT_SINGER_LEN = 10
+  const HOT_NAME = '热门'
 
   export default {
-    data(){
+//    mixins: [playlistMixin],
+    data() {
       return {
         singers: []
       }
     },
-    created(){
+    created() {
       this._getSingerList()
     },
     methods: {
-      selectSinger(singer){
+      handlePlaylist(playlist) {
+        const bottom = playlist.length > 0 ? '60px' : ''
+        this.$refs.singer.style.bottom = bottom
+        this.$refs.list.refresh()
+      },
+      selectSinger(singer) {
         this.$router.push({
           path: `/singer/${singer.id}`
         })
-//        this.setSinger(singer)
+        this.setSinger(singer)
       },
-      _getSingerList(){
+      _getSingerList() {
         getSingerList().then((res) => {
           if (res.code === ERR_OK) {
-
             this.singers = this._normalizeSinger(res.data.list)
           }
         })
       },
-      _normalizeSinger(list){
-        /*注意：Object 结构提供了“字符串—值”的对应，Map结构提供了“值—值”的对应，这里不是map*/
+      _normalizeSinger(list) {
         let map = {
           hot: {
             title: HOT_NAME,
@@ -66,9 +71,9 @@
             id: item.Fsinger_mid
           }))
         })
-//        排序，因为字母是有序展示的
-        let hot = []
+        // 为了得到有序列表，我们需要处理 map
         let ret = []
+        let hot = []
         for (let key in map) {
           let val = map[key]
           if (val.title.match(/[a-zA-Z]/)) {
@@ -81,19 +86,22 @@
           return a.title.charCodeAt(0) - b.title.charCodeAt(0)
         })
         return hot.concat(ret)
-      }
+      },
+      ...mapMutations({
+        setSinger: 'SET_SINGER'
+      })
     },
     components: {
       ListView
     }
   }
+
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  .singer {
+  .singer
     position: fixed
     top: 88px
     bottom: 0
     width: 100%
-  }
 </style>
