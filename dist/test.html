@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    html{
+      width: 100%;
+      height: 100%;
+    }
+    audio{
+      /*display: block !important;*/
+    }
+    body {
+      background-color: #222222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .container {
+      margin: 0 auto;
+      text-align: center;
+
+    }
+
+    .progress-circle {
+      position: relative;
+    }
+
+    i {
+      position: absolute;
+      color: rgba(255, 205, 49, 0.5);
+      left: 0;
+      top: 0;
+      background-image: url(static/img/play.png);
+      background-size: contain;
+      z-index: -1;
+      height: 32px;
+      width: 32px;
+    }
+
+    .progress-circle circle.progress-background {
+      -webkit-transform: scale(.9);
+      transform: scale(.9);
+      stroke: rgba(255, 205, 49, .5);
+    }
+
+    .progress-circle circle.progress-bar {
+      -webkit-transform: scale(.9) rotate(-90deg);
+      transform: scale(.9) rotate(-90deg);
+      stroke: #2f18b3;
+    }
+
+    .progress-circle circle {
+      stroke-width: 8px;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <audio src="http://ws.stream.qqmusic.qq.com/203647055.m4a?fromtag=46" id="audio"></audio>
+  <div class="progress-circle">
+    <svg width="32" height="32" viewBox="0 0 100 100" version="1.1"
+         xmlns="http://www.w3.org/2000/svg">
+      <circle r="50" cx="50" cy="50" fill="transparent" class="progress-background"></circle>
+      <circle r="50" cx="50" cy="50" fill="transparent" stroke-dasharray="314.1592653589793"
+              stroke-dashoffset="142.47214515199587" class="progress-bar"></circle>
+    </svg>
+    <i>
+    </i>
+  </div>
+</div>
+
+</body>
+<script>
+  var circle = document.getElementsByClassName('progress-bar')[0]
+  circle.style.strokeDashoffset = 314
+  var timer = setInterval(function () {
+    if (circle.style.strokeDashoffset > 0) {
+      circle.style.strokeDashoffset -= 1
+    } else {
+      alert('over')
+      clearTimeout(timer)
+    }
+  }, 10)
+</script>
+</html>
